@@ -2,8 +2,8 @@
 # Contributor: Alexey Andreyev <aa13q@ya.ru>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-pkgname=qt-mlocale-git
-_srcname=qt-mlocale
+pkgname=qt5-mlocale-git
+_pkgname=qt-mlocale-git
 pkgver=0.7.1.r1.g44df7696
 pkgrel=1
 _project=aa13q # mer-core fork
@@ -16,14 +16,14 @@ license=('LGPLv2')
 depends=('qt5-base')
 makedepends=('git')
 optdepends=()
-provides=("${_srcname}")
-conflicts=()
+provides=("${pkgname}-git" "${_pkgname}-git")
+conflicts=("${pkgname}-git" "${_pkgname}-git")
 source=(
-  "${pkgname}::git+${url}")
+  "${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   ( set -o pipefail
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   mkdir -p build
   cd build
   ../configure --prefix=/usr 
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   cd build
   make INSTALL_ROOT="${pkgdir}" install
 }
