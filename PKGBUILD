@@ -6,8 +6,8 @@ pkgname=qt5-mlocale-git
 _pkgname=qt-mlocale-git
 pkgver=0.7.1.r1.g44df7696
 pkgrel=1
-_project=aa13q # mer-core fork
-_branch=aa13q-alpm-qt5.14
+_project=mer-core
+_branch=master
 pkgdesc="Contains classes MLocale and friends originally from libmeegotouch"
 arch=('x86_64' 'aarch64')
 # FIXME: libmlocale qt-related repo naming
