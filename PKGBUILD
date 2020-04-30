@@ -43,4 +43,9 @@ package() {
   cd "${srcdir}/${_pkgname}"
   cd build
   make INSTALL_ROOT="${pkgdir}" install
+  # remove tests mess
+  rm -rf "${pkgdir}/usr/lib/libmlocale-benchmarks5"
+  rm -rf "${pkgdir}/usr/share/libmlocale-tests"
+  rm -rf "${pkgdir}/usr/lib/libmlocale-tests5"
+  rm -rf "${pkgdir}/usr/share/doc"
 }
